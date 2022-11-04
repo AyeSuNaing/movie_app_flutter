@@ -52,7 +52,7 @@ class MovieModelImpl extends MovieModel {
   List<CreditVO> mActorList = [];
   List<CreditVO> mCreatorsList = [];
 
-  
+
 
   @override
   Future<List<MovieVO>>? getNowPlayingMovies(int page) {
