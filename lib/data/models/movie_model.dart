@@ -1,10 +1,11 @@
 import 'package:movie_app/data/vos/actor_vo.dart';
 import 'package:movie_app/data/vos/genre_vo.dart';
 import 'package:movie_app/data/vos/movie_vo.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 import '../vos/credit_vo.dart';
 
-abstract class MovieModel{
+abstract class MovieModel extends Model{
   // Network
   Future<List<MovieVO>>? getNowPlayingMovies(int page);
   Future<List<MovieVO>>? getPopularMovies(int page);
@@ -16,7 +17,7 @@ abstract class MovieModel{
   Future<List<CreditVO>>? getCreditsByMovie(int movieId);
 
 
-  // Database
+  /// Database
   Future<List<MovieVO>>? getTopRatedMoviesFromDatabase();
   Future<List<MovieVO>>? getNowPlayingMoviesFromDatabase();
   Future<List<MovieVO>>? getPopularMoviesFromDatabase();
@@ -28,5 +29,20 @@ abstract class MovieModel{
   Stream<List<MovieVO>> getNowPlayingMoviesFromDatabaseReactive();
   Stream<List<MovieVO>> getPopularMoviesFromDatabaseReactive();
   Stream<List<MovieVO>> getNowTopRelatedMoviesFromDatabaseReactive();
+
+  /// Scoped Model
+  void getGenresScopedModel();
+  void getMoviesByGenresScopedModel(int genreId);
+  void getActorsScopedModel(int page);
+  void getMovieDetailsScopedModel(int movieId);
+  void getCreditsByMovieScopedModel(int movieId);
+
+  /// Scoped Model Database
+  void getTopRelatedMoviesFromDatabaseScopedModel();
+  void getNowPlayingMoviesFromDatabaseScopedModel();
+  void getPopularMoviesFromDatabaseScopedModel();
+  void getGenreFromDatabaseScopedModel();
+  void getActorsFromDatabaseScopedModel();
+  void getMovieDetailsFromDatabaseScopedModel(int movieId);
 
 }
